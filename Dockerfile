@@ -6,7 +6,7 @@ RUN chmod 777 /tmp && chmod +t /tmp
 
 # Install some packages that are useful within the images.
 RUN apt-get update && apt-get install -y \
-    git \
+    git vim jq \
 && rm -rf /var/lib/apt/lists/*
 
 # Setup the required extensions.
