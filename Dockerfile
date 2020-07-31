@@ -22,3 +22,6 @@ RUN mkdir /var/www/moodledata && chown www-data /var/www/moodledata && \
 
 # Enable mod_rewrite module
 RUN a2enmod rewrite
+
+# Get latest Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
