@@ -20,6 +20,11 @@ RUN mkdir /var/www/moodledata && chown www-data /var/www/moodledata && \
     mkdir /var/www/behatdata && chown www-data /var/www/behatdata && \
     mkdir /var/www/behatfaildumps && chown www-data /var/www/behatfaildumps
 
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug \
+    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_host = host.docker.internal" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
 # Enable mod_rewrite module
 RUN a2enmod rewrite
 
